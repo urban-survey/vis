@@ -1,0 +1,44 @@
+# Site settings
+title: MVN Visualization Techniques
+email: cnobre@sci.utah.edu;alex@sci.utah.edu
+description: "Partner website for STAR on Visualization Multivariate Networks"
+baseurl: "/mvnv"
+url: "http://vdl.sci.utah.edu"
+twitter_username: visdesignlab
+github_username: visdesignlab/mvnv
+youtube_username:
+facebook_page:
+safe: false
+lsi: false
+google_analytics: "'--'"
+use_analytics: false
+
+
+
+plugins:
+  - jekyll-redirect-from
+  # - jekyll/scholar
+
+# Build settings
+permalink: pretty
+sass:
+  sass_dir: _sass
+# exclude from build
+exclude: ["README.md", ".idea/"]
+
+# Collections
+collections:
+  # persons:
+  #   output: true
+  # videos:
+  #   output: false
+  # institutions:
+  #   output: false
+  # projects:
+  #   output: true
+  # talks:
+  #   output: false
+  techniques:
+    output: true
+    permalink: /techniques/:path/
+

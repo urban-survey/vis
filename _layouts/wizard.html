@@ -1,0 +1,299 @@
+---
+layout: default
+
+paperTypePanel:
+  paper_type: 
+    label: "Paper Type"
+    options: 
+      - "System"
+      - "Technique"
+      - "Design study"
+      - "Evaluation"
+      - "Data"
+      - "Analysis"
+
+whyPanel:
+  use_case: 
+    label: "Use Case (WHY)"
+    options: 
+      - "Sunlight access"
+      - Wind 
+      - "View impact"
+      - Energy
+      - "Disaster mgmt"
+      - Climate
+      - Noise
+      - "Property Cadastre"
+      - Other
+  analysis_action: 
+    label: "Analysis Action (WHY)"
+    options: 
+      - Lookup
+      - Browse
+      - Locate
+      - Explore
+      - Identify
+      - Compare
+      - Summarize
+      - "Spatial relationship" 
+  analysis_target:
+    label:  "Analysis Target (WHY)"
+    options: 
+      - Distribution
+      - Trends
+      - Outliers
+      - Extremes
+      - Features
+
+whatPanel:
+  physical_data_entities: 
+    label: "Physical Data Entities (WHAT)"
+    options: 
+      - Buildings
+      - Streets
+      - Nature
+  thematic_data_properties: 
+    label: "Thematic Data Properties (WHAT)"
+    options: 
+      - Uniform
+      - Semantic
+      - Multivariate
+      - Volumetric
+      - Temporal
+  thematic_data_origin:
+    label: "Thematic Data Origin (WHAT)"
+    options: 
+      - Sensing
+      - Statistical
+      - Simulation
+      - Learning
+      - Surveyed
+  scope:
+    label: "Scope (WHAT)"
+    options: 
+      - Micro
+      - Meso
+      - Macro
+
+howPanel:
+  va_plus_model: 
+    label: "VA + Model (HOW)"
+    options: 
+      - "VA w/o models"
+      - "Post-model VA"
+      - "Model integrated VA"
+      - "VA-assisted model"
+  layers: 
+    label: "Layers (HOW)"
+    options: 
+      - "Overlay"
+      - "Embedded view"
+      - "Linked view"
+      - "Animation"
+      - "Spatial jx"
+  encoding: 
+    label: "Encoding (HOW)"
+    options: 
+      - "Glyphs / streamlines"
+      - "Bar charts"
+      - "Scatterplots"
+      - "Matrix"
+      - "Parallel coord."
+      - "2D map"
+      - "3D map"
+  navigation: 
+    label: "Navigation (HOW)"
+    options: 
+      - Walking
+      - Steering
+      - Selection
+      - Manipulation
+  occlusion_handling: 
+    label: "Occlusion Handling (HOW)"
+    options: 
+      - "Distortion"
+      - "Ghosting"
+      - "Birds view"
+      - "Multi-view"
+      - "Other"
+
+---
+
+<section class="section">
+    <div class="columns">
+        <div class="column is-narrow">
+      
+            <!-- <div class="box" id="wizard_legend">
+              <h2> Legend </h2>
+              </div> -->
+      
+            <div class="box" id="wizard_panel_paper_type">
+        
+            </div>
+
+            <div class="box" id="wizard_panel">
+          
+            </div>
+      
+            <div class="box" id="wizard_panel_what">
+          
+            </div>
+
+            <div class="box" id="wizard_panel_how">
+          
+            </div>
+
+          </div>
+      
+          <div class="column" id="recommendations" style="visibility:hidden; height:820px; overflow-y:scroll;">
+        
+              {% for technique in site.techniques reversed  %}
+                {% include technique_card.html %}
+              {% endfor %}
+        
+          </div>
+      
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+            <script src="{{site.baseurl}}/scripts/compute_scores.js"></script>
+      
+            <script> 
+            
+            let allScores = {};
+        let techniques = {};
+
+        let optionsObjectPaperType = JSON.parse(('{{layout.paperTypePanel}}'.replace(/=>/g, ':')));
+        let optionsObject = JSON.parse(('{{layout.whyPanel}}'.replace(/=>/g, ':')));
+        let optionsObjectWhat = JSON.parse(('{{layout.whatPanel}}'.replace(/=>/g, ':')));
+        let optionsObjectHow = JSON.parse(('{{layout.howPanel}}'.replace(/=>/g, ':')));
+      
+      '{% for technique in site.techniques reversed  %}'
+        allScores['{{technique.key}}']={};
+        allScores['{{technique.key}}'].url='{{technique.url}}';
+        allScores['{{technique.key}}'].baseUrl='{{site.baseurl}}';
+        allScores['{{technique.key}}'].title='{{technique.title}}';
+
+        allScores['{{technique.key}}'].tags={};
+
+        allScores['{{technique.key}}'].tags.system_type='{{technique.system_type}}';
+        allScores['{{technique.key}}'].tags.technique='{{technique.technique}}';
+        allScores['{{technique.key}}'].tags.design_study='{{technique.design_study}}';
+        allScores['{{technique.key}}'].tags.evaluation='{{technique.evaluation}}';
+        allScores['{{technique.key}}'].tags.data='{{technique.data}}';
+        allScores['{{technique.key}}'].tags.analysis='{{technique.analysis}}';
+        allScores['{{technique.key}}'].tags.generation='{{technique.generation}}';
+        allScores['{{technique.key}}'].tags.curation_and_transformation='{{technique.curation_and_transformation}}';
+        allScores['{{technique.key}}'].tags.management='{{technique.management}}';
+        allScores['{{technique.key}}'].tags.modeling='{{technique.modeling}}';
+        allScores['{{technique.key}}'].tags.energy='{{technique.energy}}';
+        allScores['{{technique.key}}'].tags.urban_analysis='{{technique.urban_analysis}}';
+        allScores['{{technique.key}}'].tags.visualization='{{technique.visualization}}';
+        allScores['{{technique.key}}'].tags.sunlight_access='{{technique.sunlight_access}}';
+        allScores['{{technique.key}}'].tags.wind_ventilation='{{technique.wind_ventilation}}';
+        allScores['{{technique.key}}'].tags.view_impact='{{technique.view_impact}}';
+        allScores['{{technique.key}}'].tags.damage_and_disaster_management='{{technique.damage_and_disaster_management}}';
+        allScores['{{technique.key}}'].tags.climate='{{technique.climate}}';
+        allScores['{{technique.key}}'].tags.sound='{{technique.sound}}';
+        allScores['{{technique.key}}'].tags.property_cadastre='{{technique.property_cadastre}}';
+        allScores['{{technique.key}}'].tags.others='{{technique.others}}';
+        allScores['{{technique.key}}'].tags.lookup='{{technique.lookup}}';
+        allScores['{{technique.key}}'].tags.browse='{{technique.browse}}';
+        allScores['{{technique.key}}'].tags.locate='{{technique.locate}}';
+        allScores['{{technique.key}}'].tags.explore='{{technique.explore}}';
+        allScores['{{technique.key}}'].tags.identify='{{technique.identify}}';
+        allScores['{{technique.key}}'].tags.compare='{{technique.compare}}';
+        allScores['{{technique.key}}'].tags.summarize='{{technique.summarize}}';
+        allScores['{{technique.key}}'].tags.distribution='{{technique.distribution}}';
+        allScores['{{technique.key}}'].tags.trends='{{technique.trends}}';
+        allScores['{{technique.key}}'].tags.outliers='{{technique.outliers}}';
+        allScores['{{technique.key}}'].tags.extremes='{{technique.extremes}}';
+        allScores['{{technique.key}}'].tags.features='{{technique.features}}';
+        allScores['{{technique.key}}'].tags.target_discovery='{{technique.target_discovery}}';
+        allScores['{{technique.key}}'].tags.target_access='{{technique.target_access}}';
+        allScores['{{technique.key}}'].tags.spatial_relation='{{technique.spatial_relation}}';
+        allScores['{{technique.key}}'].tags.buildings='{{technique.buildings}}';
+        allScores['{{technique.key}}'].tags.streets='{{technique.streets}}';
+        allScores['{{technique.key}}'].tags.nature='{{technique.nature}}';
+        allScores['{{technique.key}}'].tags.uniform_discretization='{{technique.uniform_discretization}}';
+        allScores['{{technique.key}}'].tags.structural_subdivision='{{technique.structural_subdivision}}';
+        allScores['{{technique.key}}'].tags.univariate='{{technique.univariate}}';
+        allScores['{{technique.key}}'].tags.multivariate='{{technique.multivariate}}';
+        allScores['{{technique.key}}'].tags.volumetric='{{technique.volumetric}}';
+        allScores['{{technique.key}}'].tags.temporal='{{technique.temporal}}';
+        allScores['{{technique.key}}'].tags.sensing='{{technique.sensing}}';
+        allScores['{{technique.key}}'].tags.statistical='{{technique.statistical}}';
+        allScores['{{technique.key}}'].tags.simulation_based='{{technique.simulation_based}}';
+        allScores['{{technique.key}}'].tags.learning_based='{{technique.learning_based}}';
+        allScores['{{technique.key}}'].tags.surveyed='{{technique.surveyed}}';
+
+        if('{{technique.site}}' == "True" || '{{technique.block}}' == "True"){
+          allScores['{{technique.key}}'].tags.micro="True";
+        }else{
+          allScores['{{technique.key}}'].tags.micro="False";
+        }
+
+        if('{{technique.site}}' == "True" || '{{technique.block}}' == "True"){
+          allScores['{{technique.key}}'].tags.micro="True";
+        }else{
+          allScores['{{technique.key}}'].tags.micro="False";
+        }
+        
+        allScores['{{technique.key}}'].tags.multi_block='{{technique.multi_block}}';
+        allScores['{{technique.key}}'].tags.city='{{technique.city}}';
+        allScores['{{technique.key}}'].tags.va_wo_model='{{technique.va_wo_model}}';
+        allScores['{{technique.key}}'].tags.post_model='{{technique.post_model}}';
+        allScores['{{technique.key}}'].tags.model_integrated='{{technique.model_integrated}}';
+        allScores['{{technique.key}}'].tags.assisted_models='{{technique.assisted_models}}';
+        allScores['{{technique.key}}'].tags.overlay='{{technique.overlay}}';
+        allScores['{{technique.key}}'].tags.embedded='{{technique.embedded}}';
+        allScores['{{technique.key}}'].tags.linked='{{technique.linked}}';
+        allScores['{{technique.key}}'].tags.temporal_jx='{{technique.temporal_jx}}';
+        allScores['{{technique.key}}'].tags.spatial_jx='{{technique.spatial_jx}}';
+        allScores['{{technique.key}}'].tags.filter='{{technique.filter}}';
+        allScores['{{technique.key}}'].tags.aggregate='{{technique.aggregate}}';
+        allScores['{{technique.key}}'].tags.embed='{{technique.embed}}';
+        allScores['{{technique.key}}'].tags.glyphs='{{technique.glyphs}}';
+        allScores['{{technique.key}}'].tags.bar_charts='{{technique.bar_charts}}';
+        allScores['{{technique.key}}'].tags.scatterplots='{{technique.scatterplots}}';
+        allScores['{{technique.key}}'].tags.matrix='{{technique.matrix}}';
+        allScores['{{technique.key}}'].tags.parallel_coordinates='{{technique.parallel_coordinates}}';
+        allScores['{{technique.key}}'].tags.map_2d='{{technique.map_2d}}';
+        allScores['{{technique.key}}'].tags.map_3d='{{technique.map_3d}}';
+        allScores['{{technique.key}}'].tags.walking='{{technique.walking}}';
+        allScores['{{technique.key}}'].tags.steering='{{technique.steering}}';
+        allScores['{{technique.key}}'].tags.selection_based='{{technique.selection_based}}';
+        allScores['{{technique.key}}'].tags.manipulation_based='{{technique.manipulation_based}}';
+        allScores['{{technique.key}}'].tags.distortion='{{technique.distortion}}';
+        allScores['{{technique.key}}'].tags.ghosting='{{technique.ghosting}}';
+        allScores['{{technique.key}}'].tags.culling='{{technique.culling}}';
+        allScores['{{technique.key}}'].tags.birds_view='{{technique.birds_view}}';
+        allScores['{{technique.key}}'].tags.multi_view='{{technique.multi_view}}';
+        allScores['{{technique.key}}'].tags.assisted_steering='{{technique.assisted_steering}}';
+        allScores['{{technique.key}}'].tags.other='{{technique.other}}';
+        allScores['{{technique.key}}'].tags.vr_cave='{{technique.vr_cave}}';
+        allScores['{{technique.key}}'].tags.ar='{{technique.ar}}';
+        allScores['{{technique.key}}'].tags.desktop='{{technique.desktop}}';
+        allScores['{{technique.key}}'].tags.mobile='{{technique.mobile}}';
+        allScores['{{technique.key}}'].tags.case_study='{{technique.case_study}}';
+        allScores['{{technique.key}}'].tags.user_study='{{technique.user_study}}';
+        allScores['{{technique.key}}'].tags.statistical_evaluation='{{technique.statistical_evaluation}}';
+        allScores['{{technique.key}}'].tags.expert_interviews='{{technique.expert_interviews}}';
+
+
+        // card data
+        allScores['{{technique.key}}'].cardData = {};
+
+        allScores['{{technique.key}}'].cardData.abstract = '{{technique.abstract}}';
+
+
+      '{% endfor %}' 
+      
+      render_techniques(allScores);
+
+            create_panel(allScores, optionsObjectPaperType, "#wizard_panel_paper_type");
+            create_panel(allScores, optionsObject, "#wizard_panel");
+            create_panel(allScores, optionsObjectWhat, "#wizard_panel_what");
+            create_panel(allScores, optionsObjectHow, "#wizard_panel_how");   
+            </script>
+      </div>
+      
+</section>
