@@ -1,6 +1,3 @@
----
----
-
 svgString().then(logo => {
      d3.select("#svg").html(logo);
      run();
@@ -120,13 +117,13 @@ svgString().then(logo => {
   }
   
   async function svgString() {
-    let path = '{{ site.baseurl }}/assets/images/logos/animated_logo_template.svg';
+    let path = '/mvnv/assets/images/logos/animated_logo_template.svg';
     return await d3.text(path)
     // return await d3.text('/assets/images/logos/test.svg')
     // return await d3.text('/assets/images/mvn_taxonomy.svg')
     }
 
     async function typologySVG() {
-      let path = '{{ site.baseurl }}/assets/images/typology.svg';
+      let path = '/mvnv/assets/images/typology.svg';
       return await d3.text(path)
       }
