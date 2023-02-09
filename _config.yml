@@ -3,7 +3,8 @@ title: MVN Visualization Techniques
 email: cnobre@sci.utah.edu;alex@sci.utah.edu
 description: "Partner website for STAR on Visualization Multivariate Networks"
 baseurl: "/mvnv"
-url: "http://vdl.sci.utah.edu"
+url: "https://urban-survey.github.io"
+domain: "urban-survey.github.io"
 twitter_username: visdesignlab
 github_username: visdesignlab/mvnv
 youtube_username:
