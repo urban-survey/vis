@@ -472,7 +472,7 @@ function render_techniques(info, filteredScores) {
     cards.style('display', d => filteredScores.includes(d[0]) ? 'block' : 'none');
   }
 
-  // cards.select('img').property('src',d=>'/mvnv/assets/images/techniques/icons/' + info[d[0]].image);
+  // cards.select('img').property('src',d=>'/vis/assets/images/techniques/icons/' + info[d[0]].image);
 
   // cards.select('.moreLink').html(d=>'<a href="' + info[d[0]].baseUrl + info[d[0]].url + '"> More... </a>');
 

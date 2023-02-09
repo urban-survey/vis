@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>MVN Visualization Techniques</title>
-    <description>Partner website for STAR on Visualization Multivariate Networks</description>
-    <link>http://vdl.sci.utah.edu/</link>
-    <atom:link href="http://vdl.sci.utah.edu/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 09 Feb 2023 14:29:10 -0600</pubDate>
-    <lastBuildDate>Thu, 09 Feb 2023 14:29:10 -0600</lastBuildDate>
+    <title>A Survey on Visual Analytics for 3D Urban Data</title>
+    <description>Website for Urban Survey</description>
+    <link>https://urban-survey.github.io//</link>
+    <atom:link href="https://urban-survey.github.io//feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Thu, 09 Feb 2023 14:38:57 -0600</pubDate>
+    <lastBuildDate>Thu, 09 Feb 2023 14:38:57 -0600</lastBuildDate>
     <generator>Jekyll v4.3.2</generator>
     
   </channel>
