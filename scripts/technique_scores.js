@@ -35,8 +35,6 @@
       .selectAll('g')
       .data(tasks);
 
-      console.log('group size', groups.size())
-
     let groupsEnter = groups.enter().append('g')
     groups = groupsEnter.merge(groups);
 
