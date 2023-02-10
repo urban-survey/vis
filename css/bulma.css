@@ -3951,11 +3951,15 @@ a.list-item {
 .media-right {
   margin-left: 1rem; }
 
+.techniqueTitle{
+  line-height: 1.45em;
+}
+
 .media-content {
   flex-basis: auto;
   flex-grow: 1;
   flex-shrink: 1;
-  text-align: left; }
+  text-align: justify; }
 
 @media screen and (max-width: 768px) {
   .media-content {
@@ -8146,11 +8150,11 @@ label.panel-block {
   background-color: #cccccc;
   color: #4a4a4a; }
 
-.techniqueCard .content h4 {
-  height: 30px; }
+  /* .techniqueCard .content h4 {
+  height: 30px; } */
 
-.techniqueCard figure {
-  height: 51px; }
+/* .techniqueCard figure {
+  height: 51px; } */
 
 .tabs.is-toggle li.is-active a {
   border-width: 2px;

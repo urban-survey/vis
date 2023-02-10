@@ -187,6 +187,8 @@ function compute_scores(allScores){
   //create a list of key/value pairs to use in the scores
   let activeOptions = d3.selectAll('.is-active').data(); 
   
+  console.log("activeOptions", activeOptions);
+
   // let num2strMap = {
   //   "1": "ones",
   //   "2": "twos",
@@ -233,6 +235,24 @@ function compute_scores(allScores){
         break;
       case "Analysis":
         activeOptionsArray.push("analysis");
+        break;
+      case "Generation":
+        activeOptionsArray.push("generation");
+        break;
+      case "Curation & transformation":
+        activeOptionsArray.push("curation_and_transformation");
+        break;
+      case "Management":
+        activeOptionsArray.push("management");
+        break;
+      case "Modeling":
+        activeOptionsArray.push("modeling");
+        break;
+      case "Urban Analysis":
+        activeOptionsArray.push("urban_analysis");
+        break;
+      case "Visualization":
+        activeOptionsArray.push("visualization");
         break;
       case "Sunlight access":
         activeOptionsArray.push("sunlight_access");
@@ -282,9 +302,6 @@ function compute_scores(allScores){
       case "Summarize":
         activeOptionsArray.push("summarize");
         break;
-      case "Spatial relationship":
-        activeOptionsArray.push("spatial_relation");
-        break;
       case "Distribution":
         activeOptionsArray.push("distribution");
         break;
@@ -300,6 +317,15 @@ function compute_scores(allScores){
       case "Features":
         activeOptionsArray.push("features");
         break;
+      case "Target Discovery":
+        activeOptionsArray.push("target_discovery");
+        break;
+      case "Target Access":
+        activeOptionsArray.push("target_access");
+        break;
+      case "Spatial relationship":
+        activeOptionsArray.push("spatial_relation");
+        break;
       case "Buildings":
         activeOptionsArray.push("buildings");
         break;
@@ -314,6 +340,9 @@ function compute_scores(allScores){
         break;
       case "Semantic":
         activeOptionsArray.push("structural_subdivision");
+        break;
+      case "Univariate":
+        activeOptionsArray.push("univariate");
         break;
       case "Multivariate":
         activeOptionsArray.push("multivariate");
@@ -375,6 +404,15 @@ function compute_scores(allScores){
       case "Spatial jx":
         activeOptionsArray.push("spatial_jx");
         break;
+      case "Filter":
+        activeOptionsArray.push("filter");
+        break;
+      case "Aggregate":
+        activeOptionsArray.push("aggregate");
+        break;
+      case "Embed":
+        activeOptionsArray.push("embed");
+        break;
       case "Glyphs / streamlines":
         activeOptionsArray.push("glyphs");
         break;
@@ -384,8 +422,17 @@ function compute_scores(allScores){
       case "Scatterplots":
         activeOptionsArray.push("scatterplots");
         break;
+      case "Linegraphs":
+        activeOptionsArray.push("linegraphs");
+        break;
       case "Matrix":
         activeOptionsArray.push("matrix");
+        break;
+      case "Grid":
+        activeOptionsArray.push("grid");
+        break;
+      case "BoxPlot":
+        activeOptionsArray.push("boxplot");
         break;
       case "Parallel coord.":
         activeOptionsArray.push("parallel_coordinates");
@@ -402,19 +449,50 @@ function compute_scores(allScores){
       case "Ghosting":
         activeOptionsArray.push("ghosting");
         break;
+      case "Culling":
+        activeOptionsArray.push("culling");
+        break;
       case "Birds view":
         activeOptionsArray.push("birds_view");
         break;
       case "Multi-view":
         activeOptionsArray.push("multi_view");
         break;
+      case "Assisted Steering":
+        activeOptionsArray.push("assisted_steering");
+        break;
       case "Other":
         activeOptionsArray.push("other");
+        break;
+      case "VR/Cave":
+        activeOptionsArray.push("vr_cave");
+        break;
+      case "AR":
+        activeOptionsArray.push("ar");
+        break;
+      case "Desktop":
+        activeOptionsArray.push("desktop");
+        break;
+      case "Mobile":
+        activeOptionsArray.push("mobile");
+        break;
       case "Walking":
         activeOptionsArray.push("walking");
         break;
       case "Steering":
         activeOptionsArray.push("steering");
+        break;
+      case "Case Study":
+        activeOptionsArray.push("case_study");
+        break;
+      case "User Study":
+        activeOptionsArray.push("user_study");
+        break;
+      case "Statistical Evaluation":
+        activeOptionsArray.push("statistical_evaluation");
+        break;
+      case "Expert Interviews":
+        activeOptionsArray.push("expert_interviews");
         break;
       case "Selection":
         activeOptionsArray.push("selection_based");
@@ -431,8 +509,6 @@ function compute_scores(allScores){
   for(const keyScore of Object.keys(allScores)){
 
     let score = allScores[keyScore];
-
-    console.log(score);
 
     let includeScore = true;
 
@@ -452,8 +528,6 @@ function compute_scores(allScores){
 }
 
 function render_techniques(info, filteredScores) {
-
-  console.log("filteredScores", filteredScores);
 
   let techniques = Object.keys(info).map(key=>{
     return [key]
