@@ -234,24 +234,6 @@ function compute_scores(allScores){
       case "Analysis":
         activeOptionsArray.push("analysis");
         break;
-      case "Generation":
-        activeOptionsArray.push("generation");
-        break;
-      case "Curation & transformation":
-        activeOptionsArray.push("curation_and_transformation");
-        break;
-      case "Management":
-        activeOptionsArray.push("management");
-        break;
-      case "Modeling":
-        activeOptionsArray.push("modeling");
-        break;
-      case "Urban Analysis":
-        activeOptionsArray.push("urban_analysis");
-        break;
-      case "Visualization":
-        activeOptionsArray.push("visualization");
-        break;
       case "Sunlight access":
         activeOptionsArray.push("sunlight_access");
         break;
