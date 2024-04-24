@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>A Survey on Visual Analytics for 3D Urban Data</title>
-    <description>Website for Urban Survey</description>
+    <title>The State of the Art in Visual Analytics for 3D Urban Data</title>
+    <description>Website for The State of the Art in Visual Analytics for 3D Urban Data</description>
     <link>https://urban-survey.github.io//</link>
     <atom:link href="https://urban-survey.github.io//feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 12 Jan 2024 16:04:50 -0600</pubDate>
-    <lastBuildDate>Fri, 12 Jan 2024 16:04:50 -0600</lastBuildDate>
+    <pubDate>Wed, 24 Apr 2024 12:50:03 -0500</pubDate>
+    <lastBuildDate>Wed, 24 Apr 2024 12:50:03 -0500</lastBuildDate>
     <generator>Jekyll v4.3.3</generator>
     
   </channel>
